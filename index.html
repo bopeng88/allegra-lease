@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Mango Space Allegra - Lease a Suite</title>
+<style>
+body{font-family:-apple-system,system-ui,Segoe UI,Roboto,sans-serif;background:#f6f6f4;margin:0;display:flex;min-height:100vh;align-items:center;justify-content:center}
+.card{background:#fff;max-width:420px;width:90%;padding:28px;border-radius:14px;box-shadow:0 2px 12px rgba(0,0,0,.08)}
+h1{font-size:1.4rem;margin:0 0 6px}p{color:#555}
+input{width:100%;box-sizing:border-box;font-size:1.2rem;padding:14px;border:1px solid #ccc;border-radius:10px;margin:10px 0}
+button{width:100%;font-size:1.1rem;padding:14px;border:0;border-radius:10px;background:#f28c28;color:#fff;font-weight:600}
+#msg{color:#b00020;margin-top:14px}
+</style></head><body>
+<div class="card">
+<h1>Mango Space Allegra - Lease a Suite</h1>
+<p>2831 Allegra Way, Lutz, FL 33559</p>
+<form id="f"><label for="s">Enter your suite number</label>
+<input id="s" inputmode="numeric" autocomplete="off" placeholder="e.g. 666" required>
+<button type="submit">Continue</button></form>
+<div id="msg" role="alert"></div>
+</div>
+<script>
+// SUITES: add one line per suite: "suite number": "lease URL",
+var SUITES = {
+  "666": "https://form.pandadoc.com/form/RWz4NVWqyRcvMvV8tgGxqB"
+};
+function normalize(v){return String(v||"").toLowerCase().replace(/suite|ste\.?|#|\s/g,"");}
+function lookup(v){var k=normalize(v);return Object.prototype.hasOwnProperty.call(SUITES,k)?SUITES[k]:null;}
+if(typeof document!=="undefined"){document.getElementById("f").onsubmit=function(e){e.preventDefault();
+var u=lookup(document.getElementById("s").value);var m=document.getElementById("msg");
+if(u){m.textContent="";window.location.href=u;}else{m.textContent="That suite isn't available for self-serve signup. Contact Bo at bo@mangospace.com.";}};}
+if(typeof module!=="undefined")module.exports={lookup:lookup};
+</script></body></html>
